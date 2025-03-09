@@ -1,0 +1,2103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AMI Pitch Deck</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Slide.js Core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slidejs/dist/slide.min.css" />
+
+  <!-- Satoshi Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ------------------------
+       GLOBAL STYLES
+    ------------------------ */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Satoshi', sans-serif;
+      scroll-behavior: smooth;
+      overflow: hidden;
+      height: 100%;
+      background-color: #ffffff;
+      color: #0c2136;
+    }
+    
+    /* Slides Container */
+    .slides {
+      width: 100%;
+      height: 100vh;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      position: relative;
+      padding-top: 0;
+      scroll-behavior: smooth;
+    }
+    
+    /* Full-viewport slide style with subtle animation */
+    .slide {
+      width: 100%;
+      height: 100vh;
+      min-height: 100vh;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 2rem;
+      text-align: center;
+      scroll-snap-align: start;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    
+    .slide > div {
+      max-height: calc(100vh - 8rem);
+      overflow-y: auto;
+      width: 100%;
+      padding: 0 1rem;
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+    
+    .slide > div::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .slide:first-child {
+      padding-top: 5rem;
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* COLORS */
+    .bg-darkblue { background-color: #163a5f; color: #ffffff; }
+    .bg-lightgray { background-color: #e6e6e6; color: #0c2136; }
+    .bg-blue { background-color: #2950b2; color: #ffffff; }
+    
+    /* Typography */
+    h1, h2, h3 {
+      margin: 0.5rem 0;
+    }
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2.2rem; }
+    h3 { font-size: 1.8rem; }
+    p, li {
+      font-size: 1.3rem;
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Image Placeholder */
+    .image-placeholder {
+      width: 250px;
+      height: 250px;
+      background-color: #e6e6e6;
+      margin: 1rem 0;
+      transition: transform 0.3s;
+    }
+    .image-placeholder:hover {
+      transform: scale(1.05);
+    }
+    
+    /* Custom Navigation UI */
+    .progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: rgba(0, 0, 0, 0.1);
+      z-index: 2000;
+    }
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: #2950b2;
+      transition: width 0.3s;
+    }
+    .nav-buttons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 2000;
+    }
+    .nav-button {
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: #fff;
+      padding: 0.7rem;
+      margin: 0 0.3rem;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+    .nav-button:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Add these new styles for the enhanced slide 2 */
+    .two-column-layout {
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+      text-align: left;
+      gap: 2rem;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .column {
+      flex: 1;
+    }
+
+    .text-column {
+      padding-right: 2rem;
+    }
+
+    .image-column {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .feature-list {
+      margin: 1.5rem 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .feature-item {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .feature-icon {
+      background-color: #2950b2;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+
+    .feature-text {
+      flex: 1;
+    }
+
+    .feature-text strong {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: #2950b2;
+    }
+
+    .tagline {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin: 0.5rem 0 1.5rem;
+      color: #2d3538;
+      line-height: 1.4;
+    }
+
+    .highlight-box {
+      background-color: rgba(41, 80, 178, 0.1);
+      border-left: 4px solid #2950b2;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .ami-image {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .ami-image:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .two-column-layout {
+        flex-direction: column;
+      }
+      
+      .text-column {
+        padding-right: 0;
+        order: 2;
+      }
+      
+      .image-column {
+        order: 1;
+        margin-bottom: 2rem;
+      }
+    }
+    
+    /* Hide default scrollbar */
+    ::-webkit-scrollbar {
+      width: 0;
+      background: transparent;
+    }
+
+    /* Add these new styles for the enhanced slide 3 */
+    .problem-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .problem-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .problem-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .problem-icon {
+      width: 40px;
+      height: 40px;
+      background-color: #163a5f;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .problem-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0;
+      color: #163a5f;
+    }
+
+    .problem-list {
+      margin: 0.5rem 0 0 0;
+      padding-left: 1rem;
+    }
+
+    .problem-list li {
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+
+    .problem-list li::before {
+      content: "•";
+      color: #2950b2;
+      font-weight: bold;
+      display: inline-block;
+      width: 1rem;
+      margin-left: -1rem;
+    }
+
+    .problem-stat {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #2950b2;
+      margin: 0.5rem 0;
+      display: block;
+    }
+
+    .section-intro {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      text-align: center;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .section-intro p {
+      font-size: 1.4rem;
+      line-height: 1.5;
+      color: #2d3538;
+    }
+
+    .cards-container {
+      display: flex;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .cards-container {
+        flex-direction: column;
+      }
+    }
+
+    /* Add these new styles for the enhanced slide 4 */
+    .solution-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .solution-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .solution-tagline {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin: 0.5rem 0 1rem;
+      color: #2d3538;
+      max-width: 800px;
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      width: 100%;
+    }
+
+    .solution-image-container {
+      grid-column: 1 / 3;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .solution-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .solution-feature {
+      background: rgba(41, 80, 178, 0.05);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .solution-feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .solution-feature::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background-color: #2950b2;
+    }
+
+    .solution-feature-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      color: #163a5f;
+      display: flex;
+      align-items: center;
+    }
+
+    .solution-feature-icon {
+      background-color: #2950b2;
+      color: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .solution-feature-description {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .solution-feature-list {
+      margin: 1rem 0 0 0;
+      padding-left: 1.5rem;
+    }
+
+    .solution-feature-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .accuracy-badge {
+      display: inline-block;
+      background-color: #2950b2;
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-weight: 700;
+      margin-left: 1rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .solution-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .solution-image-container {
+        grid-column: 1;
+      }
+    }
+
+    /* Add these new styles for the enhanced slide 5 */
+    .market-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      color: white;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .market-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .market-tagline {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin: 0.5rem 0 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .market-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .market-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .market-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .market-value {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+      color: white;
+    }
+
+    .market-label {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .market-description {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .market-note {
+      margin-top: 2rem;
+      font-style: italic;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .market-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Add these new styles for the enhanced slide 6 */
+    .competitive-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .competitive-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .competitive-tagline {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin: 0.5rem 0 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #2d3538;
+    }
+
+    .competitive-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .competitive-vs {
+      grid-column: 1 / 3;
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .competitive-vs::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: rgba(41, 80, 178, 0.2);
+      z-index: -1;
+    }
+
+    .competitive-vs-text {
+      display: inline-block;
+      background-color: white;
+      padding: 0 2rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2950b2;
+    }
+
+    .competitive-card {
+      border-radius: 8px;
+      padding: 1.5rem;
+      height: 100%;
+      box-sizing: border-box;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+
+    .competitive-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .ami-card {
+      background-color: rgba(41, 80, 178, 0.05);
+      border: 2px solid #2950b2;
+    }
+
+    .competitor-card {
+      background-color: rgba(0, 0, 0, 0.02);
+      border: 2px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .competitive-card-header {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .competitive-card-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 0;
+      color: #163a5f;
+    }
+
+    .competitive-card-subtitle {
+      font-size: 1rem;
+      color: #2d3538;
+      margin-top: 0.5rem;
+    }
+
+    .competitive-feature-list {
+      margin: 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .competitive-feature-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .competitive-feature-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .ami-feature-icon {
+      background-color: #2950b2;
+      color: white;
+    }
+
+    .competitor-feature-icon {
+      background-color: rgba(0, 0, 0, 0.1);
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .competitive-feature-text {
+      flex: 1;
+    }
+
+    .competitive-feature-text strong {
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .ami-feature-text strong {
+      color: #2950b2;
+    }
+
+    .competitor-feature-text strong {
+      color: #2d3538;
+    }
+
+    .competitive-advantage-list {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background-color: rgba(41, 80, 178, 0.05);
+      border-radius: 8px;
+    }
+
+    .competitive-advantage-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      color: #163a5f;
+      text-align: center;
+    }
+
+    .competitive-advantage-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding: 0.5rem 0;
+    }
+
+    .competitive-advantage-icon {
+      background-color: #2950b2;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+
+    .competitive-advantage-text {
+      flex: 1;
+    }
+
+    @media (max-width: 768px) {
+      .competitive-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .competitive-vs {
+        grid-column: 1;
+      }
+    }
+
+    /* Add these new styles for the enhanced slide 7 */
+    .traction-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .traction-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .traction-tagline {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin: 0.5rem 0 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #2d3538;
+    }
+
+    .traction-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .traction-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .traction-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .traction-icon {
+      width: 60px;
+      height: 60px;
+      background-color: #163a5f;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 1rem;
+      font-size: 1.8rem;
+    }
+
+    .traction-stat {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #2950b2;
+      margin: 0.5rem 0;
+    }
+
+    .traction-label {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #163a5f;
+    }
+
+    .traction-description {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #2d3538;
+      flex-grow: 1;
+    }
+
+    .traction-timeline {
+      margin-top: 3rem;
+      position: relative;
+      padding-top: 2rem;
+    }
+
+    .traction-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 2px;
+      height: 100%;
+      background-color: rgba(41, 80, 178, 0.2);
+      transform: translateX(-50%);
+    }
+
+    .timeline-title {
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0 0 2rem 0;
+      color: #163a5f;
+      position: relative;
+      background-color: #e6e6e6;
+      display: inline-block;
+      padding: 0 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+      padding-left: calc(50% + 2rem);
+    }
+
+    .timeline-item:nth-child(even) {
+      padding-left: 0;
+      padding-right: calc(50% + 2rem);
+      text-align: right;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      background-color: #2950b2;
+      border-radius: 50%;
+      transform: translateX(-50%);
+    }
+
+    .timeline-date {
+      font-weight: 700;
+      color: #2950b2;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    @media (max-width: 768px) {
+      .traction-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .timeline-item,
+      .timeline-item:nth-child(even) {
+        padding-left: 2rem;
+        padding-right: 0;
+        text-align: left;
+      }
+      
+      .traction-timeline::before {
+        left: 8px;
+      }
+      
+      .timeline-item::before {
+        left: 8px;
+        transform: none;
+      }
+    }
+
+    /* Add these new styles for the enhanced slide 8 */
+    .business-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .business-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .business-tagline {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin: 0.5rem 0 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #2d3538;
+    }
+
+    .business-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .revenue-streams {
+      grid-column: 1 / 3;
+      margin-bottom: 2rem;
+    }
+
+    .revenue-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0 0 1.5rem 0;
+      color: #163a5f;
+      text-align: center;
+    }
+
+    .revenue-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .revenue-item {
+      background-color: rgba(41, 80, 178, 0.05);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .revenue-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .revenue-icon {
+      width: 50px;
+      height: 50px;
+      background-color: #2950b2;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .revenue-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #163a5f;
+    }
+
+    .revenue-description {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #2d3538;
+    }
+
+    .revenue-price {
+      margin-top: 1rem;
+      font-weight: 700;
+      color: #2950b2;
+    }
+
+    .business-chart {
+      background-color: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .chart-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      color: #163a5f;
+      text-align: center;
+    }
+
+    .chart-container {
+      height: 250px;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .chart-bar {
+      position: absolute;
+      bottom: 0;
+      width: 40px;
+      background-color: #2950b2;
+      border-radius: 4px 4px 0 0;
+      transition: height 1s ease-in-out;
+    }
+
+    .chart-bar-1 {
+      left: 10%;
+      height: 20%;
+    }
+
+    .chart-bar-2 {
+      left: 30%;
+      height: 40%;
+    }
+
+    .chart-bar-3 {
+      left: 50%;
+      height: 60%;
+    }
+
+    .chart-bar-4 {
+      left: 70%;
+      height: 100%;
+    }
+
+    .chart-label {
+      position: absolute;
+      bottom: -25px;
+      transform: translateX(-50%);
+      font-size: 0.9rem;
+      color: #2d3538;
+    }
+
+    .chart-value {
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #2950b2;
+    }
+
+    .chart-y-axis {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 1px;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .chart-x-axis {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .business-metrics {
+      background-color: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .metrics-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      color: #163a5f;
+      text-align: center;
+    }
+
+    .metrics-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .metrics-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .metrics-item:last-child {
+      border-bottom: none;
+    }
+
+    .metrics-label {
+      font-weight: 700;
+      color: #2d3538;
+    }
+
+    .metrics-value {
+      font-weight: 700;
+      color: #2950b2;
+    }
+
+    @media (max-width: 768px) {
+      .business-grid,
+      .revenue-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .revenue-streams {
+        grid-column: 1;
+      }
+    }
+
+    /* Add these new styles for the enhanced slide 9 */
+    .fundraising-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      color: white;
+    }
+
+    .fundraising-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .fundraising-tagline {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin: 0.5rem 0 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .fundraising-amount {
+      font-size: 4rem;
+      font-weight: 700;
+      margin: 1rem 0;
+      color: white;
+      text-align: center;
+    }
+
+    .fundraising-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .allocation-chart {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 1.5rem;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .allocation-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0 0 1.5rem 0;
+      text-align: center;
+    }
+
+    .allocation-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .allocation-bar-container {
+      flex-grow: 1;
+      height: 24px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 0 1rem;
+    }
+
+    .allocation-bar {
+      height: 100%;
+      background-color: white;
+      border-radius: 12px;
+    }
+
+    .allocation-label {
+      width: 120px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .allocation-percentage {
+      width: 50px;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .milestones {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 1.5rem;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .milestones-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0 0 1.5rem 0;
+      text-align: center;
+    }
+
+    .milestone-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+
+    .milestone-icon {
+      width: 36px;
+      height: 36px;
+      background-color: white;
+      color: #2950b2;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 1rem;
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+
+    .milestone-content {
+      flex: 1;
+    }
+
+    .milestone-title {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .milestone-description {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .fundraising-note {
+      grid-column: 1 / 3;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      text-align: center;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .fundraising-note-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .fundraising-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .fundraising-note {
+        grid-column: 1;
+      }
+    }
+
+    /* Add these new styles for the enhanced slide 10 */
+    .thank-you-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      text-align: center;
+    }
+
+    .thank-you-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #163a5f;
+    }
+
+    .thank-you-subtitle {
+      font-size: 1.8rem;
+      font-weight: 300;
+      margin-bottom: 2rem;
+      color: #2d3538;
+    }
+
+    .contact-card {
+      background-color: #163a5f;
+      color: white;
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 500px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-email {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 1rem 0;
+    }
+
+    .contact-email a {
+      color: white;
+      text-decoration: none;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+      padding-bottom: 2px;
+      transition: border-color 0.3s;
+    }
+
+    .contact-email a:hover {
+      border-color: white;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      transition: background-color 0.3s;
+    }
+
+    .social-link:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .thank-you-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin: 2rem auto;
+      background-color: #e6e6e6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 5rem;
+      color: #163a5f;
+    }
+
+    .thank-you-tagline {
+      font-style: italic;
+      color: #2950b2;
+      margin-top: 2rem;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Custom Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  
+  <!-- Navigation Buttons -->
+  <div class="nav-buttons">
+    <button class="nav-button" id="prevBtn">&#9664;</button>
+    <button class="nav-button" id="nextBtn">&#9654;</button>
+  </div>
+  
+  <!-- Slide.js Core Script -->
+  <script src="https://cdn.jsdelivr.net/npm/slidejs/dist/slide.min.js"></script>
+  
+  <div class="slides">
+    <!-- Slide 1: Cover / Title -->
+    <section class="slide bg-darkblue">
+      <div>
+        <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; text-align: center;">
+          <!-- Hero Section -->
+          <div style="margin-top: 4rem;">
+            <h1 style="font-size: 4.5rem; margin-bottom: 0.5rem;">AMI</h1>
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">American Medical Intelligence</h2>
+            <h3 style="font-size: 1.8rem; font-weight: 300;">Optimizing Vitality of Humanity</h3>
+          </div>
+
+          <!-- Main Image - Larger rounded square -->
+          <div style="width: 300px; height: 300px; margin: 2rem auto; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);">
+            <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=600&h=600&fit=crop" alt="AI Healthcare Visualization" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+
+          <!-- Bottom Section -->
+          <div style="margin-bottom: 3rem;">
+            <div style="margin-bottom: 1.5rem;">
+              <h3>Founder &amp; CEO: Fred Almeida</h3>
+              <p><strong>Contact:</strong> <a href="mailto:fred@americanmedical.ai" style="color:#fff;">fred@americanmedical.ai</a></p>
+            </div>
+            <blockquote style="font-style: italic; margin: 0;">
+              "The greatest obstacle to discovery is not ignorance—it is the illusion of knowledge."<br>
+              — Daniel J. Boorstin
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Slide 2: Meet AMI -->
+    <section class="slide">
+      <div>
+        <div class="two-column-layout">
+          <div class="column text-column">
+            <h2>Meet American Medical Intelligence</h2>
+            <p class="tagline">Evidence-based AI revolutionizing healthcare with MedRank™ technology</p>
+            
+            <div class="highlight-box">
+              <p><strong>AMI</strong> is a first-principles approach to healthcare, delivering superhuman medical intelligence that restores trust between patients and doctors.</p>
+            </div>
+            
+            <ul class="feature-list">
+              <li class="feature-item">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">
+                  <strong>Evidence-Based Intelligence</strong>
+                  Our proprietary MedRank™ technology filters out unreliable research, ensuring near 100% accuracy in recommendations.
+                </div>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">
+                  <strong>Comprehensive Health Integration</strong>
+                  Connects to wearables, biomarkers, and medical records for truly personalized care.
+                </div>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">
+                  <strong>Voice-First Experience</strong>
+                  24/7 access to medical guidance through intuitive voice interface and avatar technology.
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="column image-column">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800" alt="AMI Platform" class="ami-image">
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Slide 3: Problem - Patient Side -->
+    <section class="slide bg-lightgray">
+      <div>
+        <div class="section-intro">
+          <h2>Healthcare is Broken</h2>
+          <p>The current healthcare system fails both patients and providers, creating gaps in care and eroding trust.</p>
+        </div>
+        
+        <div class="cards-container">
+          <div class="problem-card">
+            <div class="problem-header">
+              <div class="problem-icon">👤</div>
+              <h3 class="problem-title">Patient Challenges</h3>
+            </div>
+            <span class="problem-stat">62%</span>
+            <p>of Americans struggle to find reliable health information online</p>
+            <ul class="problem-list">
+              <li><strong>Information Overload</strong> — Patients are overwhelmed with contradictory health advice</li>
+              <li><strong>Missing Root Causes</strong> — Symptom-focused care ignores underlying health issues</li>
+              <li><strong>Limited Access</strong> — Millions remain "undoctored" or underinsured</li>
+            </ul>
+          </div>
+          
+          <div class="problem-card">
+            <div class="problem-header">
+              <div class="problem-icon">👨‍⚕️</div>
+              <h3 class="problem-title">Doctor Challenges</h3>
+            </div>
+            <span class="problem-stat">38%</span>
+            <p>of patients fully trust their doctors due to systemic constraints</p>
+            <ul class="problem-list">
+              <li><strong>Time Constraints</strong> — Administrative burdens limit patient interaction</li>
+              <li><strong>Knowledge Gaps</strong> — Impossible to stay current across all specialties</li>
+              <li><strong>Fragmented Care</strong> — Lack of cross-specialty collaboration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Slide 4: Solution Overview -->
+    <section class="slide">
+      <div>
+        <div class="solution-container">
+          <div class="solution-header">
+            <h2>The AMI Solution</h2>
+            <p class="solution-tagline">Our AI-powered platform addresses healthcare's biggest challenges with evidence-based intelligence and personalized care.</p>
+          </div>
+          
+          <div class="solution-grid">
+            <div class="solution-feature">
+              <h3 class="solution-feature-title">
+                <div class="solution-feature-icon">🧠</div>
+                MedRank™ Technology
+                <span class="accuracy-badge">94% Accuracy</span>
+              </h3>
+              <p class="solution-feature-description">Our proprietary AI filters out unreliable or biased research, ensuring recommendations are based only on high-quality medical evidence.</p>
+              <ul class="solution-feature-list">
+                <li>Evaluates study methodology and reproducibility</li>
+                <li>Prioritizes peer-reviewed, unbiased research</li>
+                <li>Continuously updates with new medical findings</li>
+              </ul>
+            </div>
+            
+            <div class="solution-feature">
+              <h3 class="solution-feature-title">
+                <div class="solution-feature-icon">🔄</div>
+                Comprehensive Integration
+              </h3>
+              <p class="solution-feature-description">AMI connects to wearables, biomarkers, and medical records to create a complete picture of patient health.</p>
+              <ul class="solution-feature-list">
+                <li>Real-time data from wearable devices</li>
+                <li>Biomarker analysis for early detection</li>
+                <li>Unified health record across providers</li>
+              </ul>
+            </div>
+            
+            <div class="solution-feature">
+              <h3 class="solution-feature-title">
+                <div class="solution-feature-icon">🎯</div>
+                Root-Cause Approach
+              </h3>
+              <p class="solution-feature-description">Instead of treating symptoms, AMI identifies and addresses underlying health issues for lasting wellness.</p>
+              <ul class="solution-feature-list">
+                <li>Nutritional and lifestyle analysis</li>
+                <li>Cross-specialty diagnostic insights</li>
+                <li>Personalized intervention plans</li>
+              </ul>
+            </div>
+            
+            <div class="solution-feature">
+              <h3 class="solution-feature-title">
+                <div class="solution-feature-icon">🔊</div>
+                Voice-First Experience
+              </h3>
+              <p class="solution-feature-description">Natural, conversational interface makes complex health information accessible to everyone, anytime.</p>
+              <ul class="solution-feature-list">
+                <li>24/7 access to medical guidance</li>
+                <li>Avatar-powered visual interaction</li>
+                <li>Seamless doctor-patient communication</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Slide 5: Market Opportunity -->
+    <section class="slide bg-blue">
+      <div>
+        <div class="market-container">
+          <div class="market-header">
+            <h2>$72B Addressable Market</h2>
+            <p class="market-tagline">AMI is positioned to capture a significant share of the rapidly growing healthcare AI market.</p>
+          </div>
+          
+          <div class="market-grid">
+            <div class="market-card">
+              <div class="market-value">$4.9T</div>
+              <div class="market-label">U.S. Healthcare Market</div>
+              <p class="market-description">Projected to reach $6.8T by 2028, with increasing demand for AI-driven solutions.</p>
+            </div>
+            
+            <div class="market-card">
+              <div class="market-value">$37B</div>
+              <div class="market-label">Imaging & Biomarker Testing</div>
+              <p class="market-description">Rapidly growing sector with 12,000+ facilities seeking AI integration.</p>
+            </div>
+            
+            <div class="market-card">
+              <div class="market-value">$72B</div>
+              <div class="market-label">AI Health Subscriptions</div>
+              <p class="market-description">300M Americans × $240/year potential with our subscription model.</p>
+            </div>
+          </div>
+          
+          <p class="market-note">Additional revenue streams include Medicaid Advantage programs and global expansion opportunities.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Slide 6: Competitive Advantage -->
+    <section class="slide">
+      <div>
+        <div class="competitive-container">
+          <div class="competitive-header">
+            <h2>AMI's Competitive Edge</h2>
+            <p class="competitive-tagline">Our unique approach sets us apart from traditional healthcare AI solutions.</p>
+          </div>
+          
+          <div class="competitive-grid">
+            <div class="competitive-card ami-card">
+              <div class="competitive-card-header">
+                <h3 class="competitive-card-title">AMI Approach</h3>
+                <p class="competitive-card-subtitle">Evidence-based Medical Super Intelligence</p>
+              </div>
+              <ul class="competitive-feature-list">
+                <li class="competitive-feature-item">
+                  <div class="competitive-feature-icon ami-feature-icon">✓</div>
+                  <div class="competitive-feature-text">
+                    <strong>MedRank™ Technology</strong>
+                    Filters out unreliable or biased research for high-accuracy recommendations
+                  </div>
+                </li>
+                <li class="competitive-feature-item">
+                  <div class="competitive-feature-icon ami-feature-icon">✓</div>
+                  <div class="competitive-feature-text">
+                    <strong>Root-Cause Focus</strong>
+                    Addresses underlying health issues rather than just symptoms
+                  </div>
+                </li>
+                <li class="competitive-feature-item">
+                  <div class="competitive-feature-icon ami-feature-icon">✓</div>
+                  <div class="competitive-feature-text">
+                    <strong>4D Patient Profiles</strong>
+                    Integrates wearables, biomarkers, imaging, and medical history
+                  </div>
+                </li>
+                <li class="competitive-feature-item">
+                  <div class="competitive-feature-icon ami-feature-icon">✓</div>
+                  <div class="competitive-feature-text">
+                    <strong>Voice-First Interface</strong>
+                    Natural, conversational AI with avatar technology
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="competitive-card competitor-card">
+              <div class="competitive-card-header">
+                <h3 class="competitive-card-title">Competitors</h3>
+                <p class="competitive-card-subtitle">Traditional Healthcare AI Solutions</p>
+              </div>
+              <ul class="competitive-feature-list">
+                <li class="competitive-feature-item">
+                  <div class="competitive-feature-icon competitor-feature-icon">✗</div>
+                  <div class="competitive-feature-text">
+                    <strong>Unfiltered Research</strong>
+                    No systematic way to evaluate study quality or filter biased research
+                  </div>
+                </li>
+                <li class="competitive-feature-item">
+                  <div class="competitive-feature-icon competitor-feature-icon">✗</div>
+                  <div class="competitive-feature-text">
+                    <strong>Symptom-Focused</strong>
+                    Treats symptoms rather than identifying underlying causes
+                  </div>
+                </li>
+                <li class="competitive-feature-item">
+                  <div class="competitive-feature-icon competitor-feature-icon">✗</div>
+                  <div class="competitive-feature-text">
+                    <strong>Fragmented Data</strong>
+                    Limited integration with wearables and biomarkers
+                  </div>
+                </li>
+                <li class="competitive-feature-item">
+                  <div class="competitive-feature-icon competitor-feature-icon">✗</div>
+                  <div class="competitive-feature-text">
+                    <strong>Text-Based Interfaces</strong>
+                    Complex, technical interfaces that are difficult to navigate
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="competitive-advantage-list">
+              <h3 class="competitive-advantage-title">Key Differentiators</h3>
+              <div class="competitive-advantage-item">
+                <div class="competitive-advantage-icon">1</div>
+                <div class="competitive-advantage-text">
+                  <strong>First-Principles Approach</strong> to healthcare, focusing on root causes rather than symptoms
+                </div>
+              </div>
+              <div class="competitive-advantage-item">
+                <div class="competitive-advantage-icon">2</div>
+                <div class="competitive-advantage-text">
+                  <strong>Proprietary MedRank™ Technology</strong> ensures evidence-based recommendations with 94% accuracy
+                </div>
+              </div>
+              <div class="competitive-advantage-item">
+                <div class="competitive-advantage-icon">3</div>
+                <div class="competitive-advantage-text">
+                  <strong>Seamless Integration</strong> with wearables, biomarkers, and medical records for a complete health picture
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Slide 7: Traction & Validation -->
+    <section class="slide bg-lightgray">
+      <div>
+        <div class="traction-container">
+          <div class="traction-header">
+            <h2>Traction &amp; Validation</h2>
+            <p class="traction-tagline">AMI has demonstrated strong market validation and is rapidly gaining momentum.</p>
+          </div>
+          
+          <div class="traction-grid">
+            <div class="traction-card">
+              <div class="traction-icon">🔬</div>
+              <div class="traction-stat">94%</div>
+              <div class="traction-label">Diagnostic Accuracy</div>
+              <p class="traction-description">Beta-tested with 25+ physicians, outperforming traditional diagnostic methods in clinical trials.</p>
+            </div>
+            
+            <div class="traction-card">
+              <div class="traction-icon">👥</div>
+              <div class="traction-stat">1000+</div>
+              <div class="traction-label">Pilot Users</div>
+              <p class="traction-description">Early adopters actively using AMI, with strong engagement and positive feedback.</p>
+            </div>
+            
+            <div class="traction-card">
+              <div class="traction-icon">🏥</div>
+              <div class="traction-stat">12</div>
+              <div class="traction-label">Clinical Partnerships</div>
+              <p class="traction-description">Discussions underway with hospitals and clinics for real-world deployment and integration.</p>
+            </div>
+          </div>
+          
+          <div class="traction-timeline">
+            <h3 class="timeline-title">Roadmap</h3>
+            
+            <div class="timeline-item">
+              <div class="timeline-date">Q4 2024</div>
+              <div class="timeline-content">
+                <strong>Beta Launch</strong>
+                <p>Initial testing with health professionals</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-date">Q1 2025</div>
+              <div class="timeline-content">
+                <strong>Regulatory Discussions</strong>
+                <p>Meetings with FDA, NIH, and RFK Jnr among other healthcare stakeholders</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-date">Q3 2025</div>
+              <div class="timeline-content">
+                <strong>Full Consumer Launch</strong>
+                <p>Public release of AMI subscription service</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-date">Q4 2025</div>
+              <div class="timeline-content">
+                <strong>Healthcare Provider Integration</strong>
+                <p>Rollout to hospitals and clinics nationwide</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Slide 8: Business Model -->
+    <section class="slide">
+      <div>
+        <div class="business-container">
+          <div class="business-header">
+            <h2>Monetization Strategy</h2>
+            <p class="business-tagline">AMI's multi-faceted business model creates multiple revenue streams with high margins and recurring revenue.</p>
+          </div>
+          
+          <div class="revenue-streams">
+            <h3 class="revenue-title">Revenue Streams</h3>
+            <div class="revenue-grid">
+              <div class="revenue-item">
+                <div class="revenue-icon">💰</div>
+                <div class="revenue-name">Subscriptions</div>
+                <p class="revenue-description">Tiered plans for individuals, families, and healthcare providers</p>
+                <div class="revenue-price">$240/year per user</div>
+              </div>
+              
+              <div class="revenue-item">
+                <div class="revenue-icon">🧪</div>
+                <div class="revenue-name">Biomarker Testing</div>
+                <p class="revenue-description">At-home test kits and advanced imaging services</p>
+                <div class="revenue-price">$100-500 per test</div>
+              </div>
+              
+              <div class="revenue-item">
+                <div class="revenue-icon">🏥</div>
+                <div class="revenue-name">Enterprise Solutions</div>
+                <p class="revenue-description">Hospital and clinic integrations with custom features</p>
+                <div class="revenue-price">$10K-100K per facility</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="business-grid">
+            <div class="business-chart">
+              <h3 class="chart-title">Projected Revenue Growth</h3>
+              <div class="chart-container">
+                <div class="chart-y-axis"></div>
+                <div class="chart-x-axis"></div>
+                
+                <div class="chart-bar chart-bar-1">
+                  <div class="chart-value">$12M</div>
+                  <div class="chart-label">Year 1</div>
+                </div>
+                
+                <div class="chart-bar chart-bar-2">
+                  <div class="chart-value">$60M</div>
+                  <div class="chart-label">Year 2</div>
+                </div>
+                
+                <div class="chart-bar chart-bar-3">
+                  <div class="chart-value">$120M</div>
+                  <div class="chart-label">Year 3</div>
+                </div>
+                
+                <div class="chart-bar chart-bar-4">
+                  <div class="chart-value">$240M</div>
+                  <div class="chart-label">Year 5</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="business-metrics">
+              <h3 class="metrics-title">Key Financial Metrics</h3>
+              <ul class="metrics-list">
+                <li class="metrics-item">
+                  <span class="metrics-label">Customer Acquisition Cost (CAC)</span>
+                  <span class="metrics-value">$40</span>
+                </li>
+                <li class="metrics-item">
+                  <span class="metrics-label">Lifetime Value (LTV)</span>
+                  <span class="metrics-value">$600+</span>
+                </li>
+                <li class="metrics-item">
+                  <span class="metrics-label">Gross Margin</span>
+                  <span class="metrics-value">80%</span>
+                </li>
+                <li class="metrics-item">
+                  <span class="metrics-label">Projected Break-Even</span>
+                  <span class="metrics-value">Month 18</span>
+                </li>
+                <li class="metrics-item">
+                  <span class="metrics-label">Target Users (Year 3)</span>
+                  <span class="metrics-value">1M+</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Slide 9: Fundraising -->
+    <section class="slide bg-blue">
+      <div>
+        <div class="fundraising-container">
+          <div class="fundraising-header">
+            <h2>We're Raising $5M</h2>
+            <p class="fundraising-tagline">To scale AMI to 100K+ users and $20M ARR within 18 months.</p>
+          </div>
+          
+          <div class="fundraising-grid">
+            <div class="allocation-chart">
+              <h3 class="allocation-title">Funding Allocation</h3>
+              
+              <div class="allocation-item">
+                <div class="allocation-label">Product Dev</div>
+                <div class="allocation-bar-container">
+                  <div class="allocation-bar" style="width: 40%;"></div>
+                </div>
+                <div class="allocation-percentage">40%</div>
+              </div>
+              
+              <div class="allocation-item">
+                <div class="allocation-label">AI Research</div>
+                <div class="allocation-bar-container">
+                  <div class="allocation-bar" style="width: 25%;"></div>
+                </div>
+                <div class="allocation-percentage">25%</div>
+              </div>
+              
+              <div class="allocation-item">
+                <div class="allocation-label">Marketing</div>
+                <div class="allocation-bar-container">
+                  <div class="allocation-bar" style="width: 20%;"></div>
+                </div>
+                <div class="allocation-percentage">20%</div>
+              </div>
+              
+              <div class="allocation-item">
+                <div class="allocation-label">Operations</div>
+                <div class="allocation-bar-container">
+                  <div class="allocation-bar" style="width: 10%;"></div>
+                </div>
+                <div class="allocation-percentage">10%</div>
+              </div>
+              
+              <div class="allocation-item">
+                <div class="allocation-label">Compliance</div>
+                <div class="allocation-bar-container">
+                  <div class="allocation-bar" style="width: 5%;"></div>
+                </div>
+                <div class="allocation-percentage">5%</div>
+              </div>
+            </div>
+            
+            <div class="milestones">
+              <h3 class="milestones-title">Key Milestones</h3>
+              
+              <div class="milestone-item">
+                <div class="milestone-icon">1</div>
+                <div class="milestone-content">
+                  <div class="milestone-title">FDA & NIH Compliance</div>
+                  <p class="milestone-description">Secure regulatory approvals and establish compliance framework</p>
+                </div>
+              </div>
+              
+              <div class="milestone-item">
+                <div class="milestone-icon">2</div>
+                <div class="milestone-content">
+                  <div class="milestone-title">Product Expansion</div>
+                  <p class="milestone-description">Enhance AI capabilities and expand biomarker integration</p>
+                </div>
+              </div>
+              
+              <div class="milestone-item">
+                <div class="milestone-icon">3</div>
+                <div class="milestone-content">
+                  <div class="milestone-title">Market Penetration</div>
+                  <p class="milestone-description">Scale to 100K+ users through targeted marketing campaigns</p>
+                </div>
+              </div>
+              
+              <div class="milestone-item">
+                <div class="milestone-icon">4</div>
+                <div class="milestone-content">
+                  <div class="milestone-title">Healthcare Integration</div>
+                  <p class="milestone-description">Establish partnerships with major healthcare providers</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="fundraising-note">
+              <h3 class="fundraising-note-title">Series A Readiness</h3>
+              <p>With this funding, AMI will be positioned for a Series A at a $100M+ valuation within 18 months, backed by strong user growth and revenue metrics.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Slide 10: Thank You -->
+    <section class="slide">
+      <div>
+        <div class="thank-you-container">
+          <div style="width: 250px; height: 250px; margin: 0 auto 2rem; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+            <img src="@fred profile shot.png" alt="Fred Almeida" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <h1 class="thank-you-title">Thank You!</h1>
+          <p class="thank-you-subtitle">We appreciate your time and interest in AMI.</p>
+          
+          <div class="contact-card">
+            <h3 class="contact-title">For questions or more information:</h3>
+            <div class="contact-info">Fred Almeida, Founder & CEO</div>
+            <div class="contact-email">
+              <a href="mailto:fred@americanmedical.ai">fred@americanmedical.ai</a>
+            </div>
+            
+            <div class="social-links">
+              <div class="social-link">in</div>
+              <div class="social-link">𝕏</div>
+              <div class="social-link">f</div>
+            </div>
+          </div>
+          
+          <p class="thank-you-tagline">"Let's revolutionize healthcare together."</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <script>
+    // Initialize Slide.js with dual interaction modes.
+    const slideshow = new Slide({
+      container: '.slides',
+      loop: false,
+      controls: false,       // Custom controls used below.
+      pagination: false,     // Custom progress bar.
+      swipe: true,
+      keyboard: true
+    });
+    
+    // Custom Navigation Controls
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    nextBtn.addEventListener('click', () => slideshow.next());
+    prevBtn.addEventListener('click', () => slideshow.prev());
+    
+    // Update Progress Bar on scroll
+    const progressBar = document.getElementById('progressBar');
+    const slidesContainer = document.querySelector('.slides');
+    slidesContainer.addEventListener('scroll', function() {
+      const scrollTop = this.scrollTop;
+      const totalHeight = this.scrollHeight - this.clientHeight;
+      const progressPercent = (scrollTop / totalHeight) * 100;
+      progressBar.style.width = progressPercent + '%';
+    });
+  </script>
+</body>
+</html>

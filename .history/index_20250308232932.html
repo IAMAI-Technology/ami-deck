@@ -1,0 +1,599 @@
+we are going to create a slidejs slide deck from the PRD contents and essentially its a web based interactive simple slide deck for my cofounder Fred to use in investor meetings
+
+here is a good start for us :
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AMI Pitch Deck</title>
+  <!-- Slide.js Core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slidejs/dist/slide.min.css" />
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AMI Pitch Deck</title>
+  <!-- Slide.js Core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slidejs/dist/slide.min.css" />
+
+  <!-- Satoshi Font (via Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* -----------------------------
+       GLOBAL STYLES
+       ----------------------------- */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Satoshi', sans-serif;
+      background: #ffffff;
+      color: #0c2136; /* Default text color */
+    }
+
+    .slides {
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Slide.js built-in classes can be overridden or extended here */
+    .slide {
+      padding: 2rem 3rem;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Example color usage from the palette:
+       #163a5f, #ffffff, #2d3538, #0c2136, #e6e6e6, #2950b2
+       You can adapt as needed per slide or for heading backgrounds, etc.
+    */
+
+    /* Headings & Text */
+    h1, h2, h3 {
+      margin: 0.5rem 0;
+    }
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.7rem; }
+    h3 { font-size: 1.4rem; }
+
+    p, li {
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Placeholder image styling */
+    .image-placeholder {
+      width: 200px;
+      height: 200px;
+      background-color: #e6e6e6;
+      display: inline-block;
+      margin: 1rem 0;
+    }
+
+    /* Utility classes */
+    .text-white { color: #ffffff !important; }
+    .bg-darkblue { background-color: #163a5f; }
+    .bg-lightgray { background-color: #e6e6e6; }
+    .bg-blue { background-color: #2950b2; }
+
+    /* Example for bullet lists spacing */
+    ul {
+      margin-left: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Slide-specific classes can go here if needed */
+  </style>
+</head>
+
+<body>
+  <!-- Slide.js Core Script -->
+  <script src="https://cdn.jsdelivr.net/npm/slidejs/dist/slide.min.js"></script>
+
+  <div class="slides">
+    <!-- Slide 1: Cover / Title -->
+    <section class="slide bg-darkblue text-white">
+      <h1>American Medical Intelligence (AMI)</h1>
+      <h3>Founder &amp; CEO: Fred Almeida</h3>
+      <p><strong>Contact:</strong> <a href="mailto:fred@americanmedical.ai" style="color:#fff;">fred@americanmedical.ai</a></p>
+      <blockquote>
+        “The greatest obstacle to discovery is not ignorance—it is the illusion of knowledge.”<br>
+        — Daniel J. Boorstin
+      </blockquote>
+      <div class="image-placeholder"></div>
+      <p style="font-size:0.8rem;">
+        Property of American Medical Intelligence (AMI), Inc. © 2025
+      </p>
+    </section>
+
+    <!-- Slide 2: Meet AMI -->
+    <section class="slide">
+      <h2>Meet American Medical Intelligence</h2>
+      <p><strong>American Medical Intelligence (AMI)</strong> is a health AI pioneer tackling a broken system with a first-principles approach. We deliver
+      <em>evidence-based Medical Super Intelligence</em>—voice-first, avatar-powered—restoring trust between patients and doctors while optimizing America’s health, one root cause at a time.</p>
+      <ul>
+        <li>24/7 voice-first, superhuman medical intelligence</li>
+        <li>Revolutionizing holistic medical diagnostics</li>
+        <li>Connects to wearables and devices for real-time data</li>
+        <li>Maintains context for daily health optimization</li>
+        <li>Seamless patient-doctor-clinic connections</li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 3: Our Moonshot -->
+    <section class="slide">
+      <h2>Our Moonshot 🚀</h2>
+      <p><strong>AMI aims to revolutionize global human health</strong> with unbiased, evidence-based AI—optimizing vitality for billions and redefining medicine through first-principles innovation.</p>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 4: Problem - Patient Side -->
+    <section class="slide">
+      <h2>Problem: Patient Perspective</h2>
+      <ul>
+        <li><strong>Information Overload &amp; Confusion</strong>: Patients struggle to find credible, tailored answers. Many remain <em>“undoctored”</em> or underinsured.</li>
+        <li><strong>Missing the Root Cause</strong>: Traditional healthcare treats symptoms rather than underlying issues, fueling chronic conditions.</li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 5: Problem - Doctor Side -->
+    <section class="slide">
+      <h2>Problem: Doctor Perspective</h2>
+      <ul>
+        <li><strong>Time Constraints</strong>: Administrative burdens limit physicians’ ability to stay current.</li>
+        <li><strong>Fragmented Knowledge</strong>: Lack of cross-specialty collaboration leads to lost insights.</li>
+        <li><strong>Eroding Trust</strong>: Only 38% of patients fully trust their doctor—driven by poor transparency and limited follow-up.</li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 6: Solution Overview -->
+    <section class="slide bg-lightgray">
+      <h2>Solution – AMI: Super Medical Intelligence AI</h2>
+      <h3>What It Is</h3>
+      <p>A <strong>fact-based, multimodal AI platform</strong>—“Medical Super Intelligence”—built on <strong>MedRank™</strong> to filter out unreliable or biased research.</p>
+      <h3>Why It Matters</h3>
+      <ul>
+        <li><strong>Near 100% accuracy</strong> in diagnoses &amp; treatment recommendations</li>
+        <li>Restores <strong>confidence in medical advice</strong></li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 7: Key Features -->
+    <section class="slide">
+      <h2>Key Features</h2>
+      <h3>Bio-Marker Understanding</h3>
+      <p><strong>Bias for testing</strong>—blood, imaging, genetics—to catch problems early and personalize interventions.</p>
+
+      <h3>Nutritional Management</h3>
+      <p><strong>Root-cause approach</strong> to address diet &amp; deficiencies, reducing pharmaceutical dependency and promoting lasting wellness.</p>
+
+      <h3>Medical Prediction &amp; Health Optimization</h3>
+      <p>Predictive AI modeling from wearables &amp; history for proactive, truly <strong>personalized care</strong>.</p>
+
+      <h3>Doctor-Specific Diagnostics &amp; Triage</h3>
+      <p>AI-driven <strong>cross-specialty insights</strong>, enhancing diagnostic accuracy and freeing doctors’ time.</p>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 8: AMI Platform -->
+    <section class="slide">
+      <h2>AMI Platform</h2>
+      <ul>
+        <li><strong>Consumer App &amp; Doctor Interface</strong>: Voice-first avatar, real-time answers, nutrition guidance, and referrals.</li>
+        <li><strong>Unified Health Record</strong>: Integrates wearable data, blood tests, imaging, and more for a 360° view.</li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 9: Product & Validation -->
+    <section class="slide bg-blue text-white">
+      <h2>Product &amp; Validation</h2>
+      <ul>
+        <li><strong>Beta-Tested</strong> with 25+ physicians, achieving 94% accuracy—outperforming GPs.</li>
+        <li><strong>Pilot Users</strong>: Thousands engaged with preliminary AI, praising ease and accuracy.</li>
+        <li><strong>Clinical Partnerships</strong>: Early discussions with hospitals &amp; clinics for real-world deployment.</li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 10: Traction & Monetization -->
+    <section class="slide">
+      <h2>Traction &amp; Monetization</h2>
+      <ul>
+        <li><strong>Subscriptions</strong>: Tiered plans for individuals, families, employers, and healthcare providers.</li>
+        <li><strong>Biomarker Services</strong>: At-home kits, advanced imaging.</li>
+        <li><strong>Doctor Products</strong>: AI-driven diagnostics, MedRank™ research insights.</li>
+        <li><strong>Data Services</strong>: De-identified insights for HHS, NIH, FDA, Pharma.</li>
+        <li><strong>Medicaid Advantage</strong>: Programs to reduce hospital admissions.</li>
+        <li><strong>HSA/FSA Integration</strong>: Pre-tax payment options.</li>
+        <li><strong>Supplements/Therapeutics</strong>: Personalized recommendations.</li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 11: Business Model -->
+    <section class="slide">
+      <h2>Business Model</h2>
+      <ul>
+        <li><strong>$4.9T U.S. Healthcare Market</strong>, projected $6.8T by 2028.</li>
+        <li><strong>$26B Imaging Market</strong> (12,000+ facilities).</li>
+        <li><strong>$11B Self-Testing Market</strong>, to $25B by 2033.</li>
+        <li><strong>TAM:</strong> 300M Americans × $240/year = $72B potential.</li>
+        <li>Additional revenue from <strong>Medicaid Advantage &amp; global expansion</strong>.</li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 12: Market Strategy -->
+    <section class="slide">
+      <h2>Market Strategy</h2>
+      <ul>
+        <li><strong>Branding</strong>: AMI as the “circuit breaker” for healthcare crises.</li>
+        <li><strong>Target Audience</strong>: Start with mothers/grandmothers (health influencers), then uninsured/underinsured.</li>
+        <li><strong>Phased Expansion</strong>: America-first, then Mexico, South America, Japan.</li>
+        <li><strong>Marketing Channels</strong>: YouTube, newsletters, and avatar-driven brand personality.</li>
+        <li><strong>Supplement Entry Strategy</strong>: Gateway to deeper AI-based health optimization.</li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 13: Go-To-Market & Competitive Advantage -->
+    <section class="slide">
+      <h2>Go-To-Market &amp; Competitive Edge</h2>
+      <h3>Current Landscape</h3>
+      <ul>
+        <li>Big EHR players (Cerner, EPIC) lack real-time AI or nutritional intelligence.</li>
+        <li>Consumer apps are piecemeal and often not evidence-based.</li>
+      </ul>
+      <h3>AMI’s Advantage</h3>
+      <ul>
+        <li><strong>MedRank™</strong>: Filters low-quality research for evidence-based decisions.</li>
+        <li><strong>First-Principles Approach</strong>: Root-cause focus and personalization.</li>
+        <li><strong>Voice-First &amp; Avatar</strong>: Easy, intuitive engagement.</li>
+        <li><strong>4D Profiles</strong>: Wearables, biomarkers, imaging, history combined.</li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 14: Team -->
+    <section class="slide bg-lightgray">
+      <h2>The Team</h2>
+      <p><strong>Founder &amp; CEO:</strong> Fred Almeida</p>
+      <p>
+        <strong>Contact:</strong> <a href="mailto:fred@americanmedical.ai">fred@americanmedical.ai</a><br>
+        Additional key team members &amp; advisors (AI experts, medical professionals) to be highlighted here.
+      </p>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 15: Thank You -->
+    <section class="slide">
+      <h1>Thank You!</h1>
+      <p>We appreciate your time and interest in AMI.</p>
+      <p>For questions or more information, please reach out:</p>
+      <p><strong>fred@americanmedical.ai</strong></p>
+      <div class="image-placeholder"></div>
+      <p style="font-size:0.9rem;">
+        <em>Let’s revolutionize healthcare together.</em>
+      </p>
+    </section>
+  </div>
+
+  <!-- Initialize Slide.js -->
+  <script>
+    const slideshow = new Slide({
+      container: '.slides',
+      loop: false,
+      controls: true,      // show next/prev arrows
+      pagination: true,    // show pagination dots
+      swipe: true,         // allow touch swipe
+      keyboard: true       // allow keyboard arrows
+    });
+  </script>
+</body>
+</html>
+
+How to Use / Customize
+	1.	Open this HTML file in a browser or local server to view the slides.
+	2.	Placeholder Images: Replace <div class="image-placeholder"></div> with actual <img> tags or remove them if no image is needed.
+	3.	Colors & Styles: Adjust color backgrounds (e.g., .bg-darkblue { background-color: #163a5f; }) or text color to match your preference from the provided palette.
+	4.	Slide Order: Feel free to rearrange slides or split them further for clarity.
+	5.	Transitions & Animations: Slide.js offers additional configuration. You can enable transitions (like fade, slide, zoom) in the initialization script if you decide to add more interactivity later.
+
+This setup uses your chosen Satoshi font, incorporates the color palette (#163a5f, #ffffff, #2d3538, #0c2136, #e6e6e6, #2950b2), and includes placeholders where you can insert real images or graphics. It’s designed as a static, clean investor deck that can be expanded with transitions or more advanced Slide.js features if needed.
+  <!-- Satoshi Font (via Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* -----------------------------
+       GLOBAL STYLES
+       ----------------------------- */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Satoshi', sans-serif;
+      background: #ffffff;
+      color: #0c2136; /* Default text color */
+    }
+
+    .slides {
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Slide.js built-in classes can be overridden or extended here */
+    .slide {
+      padding: 2rem 3rem;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Example color usage from the palette:
+       #163a5f, #ffffff, #2d3538, #0c2136, #e6e6e6, #2950b2
+       You can adapt as needed per slide or for heading backgrounds, etc.
+    */
+
+    /* Headings & Text */
+    h1, h2, h3 {
+      margin: 0.5rem 0;
+    }
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.7rem; }
+    h3 { font-size: 1.4rem; }
+
+    p, li {
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Placeholder image styling */
+    .image-placeholder {
+      width: 200px;
+      height: 200px;
+      background-color: #e6e6e6;
+      display: inline-block;
+      margin: 1rem 0;
+    }
+
+    /* Utility classes */
+    .text-white { color: #ffffff !important; }
+    .bg-darkblue { background-color: #163a5f; }
+    .bg-lightgray { background-color: #e6e6e6; }
+    .bg-blue { background-color: #2950b2; }
+
+    /* Example for bullet lists spacing */
+    ul {
+      margin-left: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Slide-specific classes can go here if needed */
+  </style>
+</head>
+
+<body>
+  <!-- Slide.js Core Script -->
+  <script src="https://cdn.jsdelivr.net/npm/slidejs/dist/slide.min.js"></script>
+
+  <div class="slides">
+    <!-- Slide 1: Cover / Title -->
+    <section class="slide bg-darkblue text-white">
+      <h1>American Medical Intelligence (AMI)</h1>
+      <h3>Founder &amp; CEO: Fred Almeida</h3>
+      <p><strong>Contact:</strong> <a href="mailto:fred@americanmedical.ai" style="color:#fff;">fred@americanmedical.ai</a></p>
+      <blockquote>
+        “The greatest obstacle to discovery is not ignorance—it is the illusion of knowledge.”<br>
+        — Daniel J. Boorstin
+      </blockquote>
+      <div class="image-placeholder"></div>
+      <p style="font-size:0.8rem;">
+        Property of American Medical Intelligence (AMI), Inc. © 2025
+      </p>
+    </section>
+
+    <!-- Slide 2: Meet AMI -->
+    <section class="slide">
+      <h2>Meet American Medical Intelligence</h2>
+      <p><strong>American Medical Intelligence (AMI)</strong> is a health AI pioneer tackling a broken system with a first-principles approach. We deliver
+      <em>evidence-based Medical Super Intelligence</em>—voice-first, avatar-powered—restoring trust between patients and doctors while optimizing America’s health, one root cause at a time.</p>
+      <ul>
+        <li>24/7 voice-first, superhuman medical intelligence</li>
+        <li>Revolutionizing holistic medical diagnostics</li>
+        <li>Connects to wearables and devices for real-time data</li>
+        <li>Maintains context for daily health optimization</li>
+        <li>Seamless patient-doctor-clinic connections</li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 3: Our Moonshot -->
+    <section class="slide">
+      <h2>Our Moonshot 🚀</h2>
+      <p><strong>AMI aims to revolutionize global human health</strong> with unbiased, evidence-based AI—optimizing vitality for billions and redefining medicine through first-principles innovation.</p>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 4: Problem - Patient Side -->
+    <section class="slide">
+      <h2>Problem: Patient Perspective</h2>
+      <ul>
+        <li><strong>Information Overload &amp; Confusion</strong>: Patients struggle to find credible, tailored answers. Many remain <em>“undoctored”</em> or underinsured.</li>
+        <li><strong>Missing the Root Cause</strong>: Traditional healthcare treats symptoms rather than underlying issues, fueling chronic conditions.</li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 5: Problem - Doctor Side -->
+    <section class="slide">
+      <h2>Problem: Doctor Perspective</h2>
+      <ul>
+        <li><strong>Time Constraints</strong>: Administrative burdens limit physicians’ ability to stay current.</li>
+        <li><strong>Fragmented Knowledge</strong>: Lack of cross-specialty collaboration leads to lost insights.</li>
+        <li><strong>Eroding Trust</strong>: Only 38% of patients fully trust their doctor—driven by poor transparency and limited follow-up.</li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 6: Solution Overview -->
+    <section class="slide bg-lightgray">
+      <h2>Solution – AMI: Super Medical Intelligence AI</h2>
+      <h3>What It Is</h3>
+      <p>A <strong>fact-based, multimodal AI platform</strong>—“Medical Super Intelligence”—built on <strong>MedRank™</strong> to filter out unreliable or biased research.</p>
+      <h3>Why It Matters</h3>
+      <ul>
+        <li><strong>Near 100% accuracy</strong> in diagnoses &amp; treatment recommendations</li>
+        <li>Restores <strong>confidence in medical advice</strong></li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 7: Key Features -->
+    <section class="slide">
+      <h2>Key Features</h2>
+      <h3>Bio-Marker Understanding</h3>
+      <p><strong>Bias for testing</strong>—blood, imaging, genetics—to catch problems early and personalize interventions.</p>
+
+      <h3>Nutritional Management</h3>
+      <p><strong>Root-cause approach</strong> to address diet &amp; deficiencies, reducing pharmaceutical dependency and promoting lasting wellness.</p>
+
+      <h3>Medical Prediction &amp; Health Optimization</h3>
+      <p>Predictive AI modeling from wearables &amp; history for proactive, truly <strong>personalized care</strong>.</p>
+
+      <h3>Doctor-Specific Diagnostics &amp; Triage</h3>
+      <p>AI-driven <strong>cross-specialty insights</strong>, enhancing diagnostic accuracy and freeing doctors’ time.</p>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 8: AMI Platform -->
+    <section class="slide">
+      <h2>AMI Platform</h2>
+      <ul>
+        <li><strong>Consumer App &amp; Doctor Interface</strong>: Voice-first avatar, real-time answers, nutrition guidance, and referrals.</li>
+        <li><strong>Unified Health Record</strong>: Integrates wearable data, blood tests, imaging, and more for a 360° view.</li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 9: Product & Validation -->
+    <section class="slide bg-blue text-white">
+      <h2>Product &amp; Validation</h2>
+      <ul>
+        <li><strong>Beta-Tested</strong> with 25+ physicians, achieving 94% accuracy—outperforming GPs.</li>
+        <li><strong>Pilot Users</strong>: Thousands engaged with preliminary AI, praising ease and accuracy.</li>
+        <li><strong>Clinical Partnerships</strong>: Early discussions with hospitals &amp; clinics for real-world deployment.</li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 10: Traction & Monetization -->
+    <section class="slide">
+      <h2>Traction &amp; Monetization</h2>
+      <ul>
+        <li><strong>Subscriptions</strong>: Tiered plans for individuals, families, employers, and healthcare providers.</li>
+        <li><strong>Biomarker Services</strong>: At-home kits, advanced imaging.</li>
+        <li><strong>Doctor Products</strong>: AI-driven diagnostics, MedRank™ research insights.</li>
+        <li><strong>Data Services</strong>: De-identified insights for HHS, NIH, FDA, Pharma.</li>
+        <li><strong>Medicaid Advantage</strong>: Programs to reduce hospital admissions.</li>
+        <li><strong>HSA/FSA Integration</strong>: Pre-tax payment options.</li>
+        <li><strong>Supplements/Therapeutics</strong>: Personalized recommendations.</li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 11: Business Model -->
+    <section class="slide">
+      <h2>Business Model</h2>
+      <ul>
+        <li><strong>$4.9T U.S. Healthcare Market</strong>, projected $6.8T by 2028.</li>
+        <li><strong>$26B Imaging Market</strong> (12,000+ facilities).</li>
+        <li><strong>$11B Self-Testing Market</strong>, to $25B by 2033.</li>
+        <li><strong>TAM:</strong> 300M Americans × $240/year = $72B potential.</li>
+        <li>Additional revenue from <strong>Medicaid Advantage &amp; global expansion</strong>.</li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 12: Market Strategy -->
+    <section class="slide">
+      <h2>Market Strategy</h2>
+      <ul>
+        <li><strong>Branding</strong>: AMI as the “circuit breaker” for healthcare crises.</li>
+        <li><strong>Target Audience</strong>: Start with mothers/grandmothers (health influencers), then uninsured/underinsured.</li>
+        <li><strong>Phased Expansion</strong>: America-first, then Mexico, South America, Japan.</li>
+        <li><strong>Marketing Channels</strong>: YouTube, newsletters, and avatar-driven brand personality.</li>
+        <li><strong>Supplement Entry Strategy</strong>: Gateway to deeper AI-based health optimization.</li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 13: Go-To-Market & Competitive Advantage -->
+    <section class="slide">
+      <h2>Go-To-Market &amp; Competitive Edge</h2>
+      <h3>Current Landscape</h3>
+      <ul>
+        <li>Big EHR players (Cerner, EPIC) lack real-time AI or nutritional intelligence.</li>
+        <li>Consumer apps are piecemeal and often not evidence-based.</li>
+      </ul>
+      <h3>AMI’s Advantage</h3>
+      <ul>
+        <li><strong>MedRank™</strong>: Filters low-quality research for evidence-based decisions.</li>
+        <li><strong>First-Principles Approach</strong>: Root-cause focus and personalization.</li>
+        <li><strong>Voice-First &amp; Avatar</strong>: Easy, intuitive engagement.</li>
+        <li><strong>4D Profiles</strong>: Wearables, biomarkers, imaging, history combined.</li>
+      </ul>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 14: Team -->
+    <section class="slide bg-lightgray">
+      <h2>The Team</h2>
+      <p><strong>Founder &amp; CEO:</strong> Fred Almeida</p>
+      <p>
+        <strong>Contact:</strong> <a href="mailto:fred@americanmedical.ai">fred@americanmedical.ai</a><br>
+        Additional key team members &amp; advisors (AI experts, medical professionals) to be highlighted here.
+      </p>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 15: Thank You -->
+    <section class="slide">
+      <h1>Thank You!</h1>
+      <p>We appreciate your time and interest in AMI.</p>
+      <p>For questions or more information, please reach out:</p>
+      <p><strong>fred@americanmedical.ai</strong></p>
+      <div class="image-placeholder"></div>
+      <p style="font-size:0.9rem;">
+        <em>Let’s revolutionize healthcare together.</em>
+      </p>
+    </section>
+  </div>
+
+  <!-- Initialize Slide.js -->
+  <script>
+    const slideshow = new Slide({
+      container: '.slides',
+      loop: false,
+      controls: true,      // show next/prev arrows
+      pagination: true,    // show pagination dots
+      swipe: true,         // allow touch swipe
+      keyboard: true       // allow keyboard arrows
+    });
+  </script>
+</body>
+</html>

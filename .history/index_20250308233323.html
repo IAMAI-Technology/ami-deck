@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AMI Pitch Deck</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Slide.js Core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slidejs/dist/slide.min.css" />
+
+  <!-- Satoshi Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ------------------------
+       GLOBAL STYLES
+    ------------------------ */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Satoshi', sans-serif;
+      scroll-behavior: smooth;
+      overflow: hidden; /* Prevents unnecessary scrolling */
+    }
+
+    .slides {
+      width: 100%;
+      height: 100vh;
+    }
+
+    /* Ensure each slide is a full-page view */
+    .slide {
+      width: 100%;
+      height: 100vh;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* COLORS */
+    .bg-darkblue { background-color: #163a5f; color: white; }
+    .bg-lightgray { background-color: #e6e6e6; }
+    .bg-blue { background-color: #2950b2; color: white; }
+    
+    /* Headings & Text */
+    h1, h2, h3 {
+      margin: 0.5rem 0;
+    }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.6rem; }
+    p, li {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Navigation Enhancements */
+    .slides {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+    }
+    .slide {
+      scroll-snap-align: start;
+    }
+    
+    /* Image Placeholder */
+    .image-placeholder {
+      width: 250px;
+      height: 250px;
+      background-color: #e6e6e6;
+      display: block;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Slide.js Core Script -->
+  <script src="https://cdn.jsdelivr.net/npm/slidejs/dist/slide.min.js"></script>
+
+  <div class="slides">
+    <!-- Slide 1: Cover / Title -->
+    <section class="slide bg-darkblue">
+      <h1>American Medical Intelligence (AMI)</h1>
+      <h3>Founder &amp; CEO: Fred Almeida</h3>
+      <p><strong>Contact:</strong> <a href="mailto:fred@americanmedical.ai" style="color:#fff;">fred@americanmedical.ai</a></p>
+      <blockquote>
+        “The greatest obstacle to discovery is not ignorance—it is the illusion of knowledge.”<br> — Daniel J. Boorstin
+      </blockquote>
+      <div class="image-placeholder"></div>
+    </section>
+
+    <!-- Slide 2: Meet AMI -->
+    <section class="slide">
+      <h2>Meet American Medical Intelligence</h2>
+      <p>AMI is an AI-powered health assistant revolutionizing diagnostics with evidence-based medical intelligence.</p>
+      <ul>
+        <li>24/7 AI-driven medical intelligence</li>
+        <li>Wearable & biomarker integration</li>
+        <li>Seamless patient-doctor connections</li>
+      </ul>
+    </section>
+
+    <!-- Slide 3: Problem - Patient Side -->
+    <section class="slide bg-lightgray">
+      <h2>Healthcare is Broken</h2>
+      <ul>
+        <li><strong>Patients:</strong> Overwhelmed with misinformation & lack of access.</li>
+        <li><strong>Doctors:</strong> Time constraints, fragmented knowledge, and outdated systems.</li>
+      </ul>
+    </section>
+
+    <!-- Slide 4: Solution Overview -->
+    <section class="slide">
+      <h2>The AMI Solution</h2>
+      <p><strong>AI-powered diagnostics</strong> using MedRank™ for near 100% accuracy.</p>
+      <ul>
+        <li>Instant, evidence-based medical guidance</li>
+        <li>Integrates real-time biomarker & wearable data</li>
+        <li>AI-driven clinical support for doctors</li>
+      </ul>
+    </section>
+
+    <!-- Slide 5: Market Opportunity -->
+    <section class="slide bg-blue">
+      <h2>$72B Addressable Market</h2>
+      <ul>
+        <li>U.S. Healthcare Market: $4.9T</li>
+        <li>Imaging & Biomarker Testing: $37B</li>
+        <li>Consumer AI Health Subscriptions: $72B</li>
+      </ul>
+    </section>
+
+    <!-- Slide 6: Competitive Advantage -->
+    <section class="slide">
+      <h2>AMI’s Competitive Edge</h2>
+      <ul>
+        <li><strong>MedRank™</strong> filters biased research for high-accuracy AI.</li>
+        <li>4D Patient Profiles: Wearables, biomarkers, history.</li>
+        <li>Voice-first UX with deep doctor integration.</li>
+      </ul>
+    </section>
+
+    <!-- Slide 7: Traction & Validation -->
+    <section class="slide bg-lightgray">
+      <h2>Traction & Validation</h2>
+      <ul>
+        <li>Beta-tested with **25+ physicians** → **94% accuracy**.</li>
+        <li>Thousands of engaged users.</li>
+        <li>Upcoming meetings with **FDA, NIH, RFK Jr.**</li>
+      </ul>
+    </section>
+
+    <!-- Slide 8: Business Model -->
+    <section class="slide">
+      <h2>Monetization Strategy</h2>
+      <ul>
+        <li>Subscription plans ($240/year per user)</li>
+        <li>Biomarker diagnostics & AI-powered testing</li>
+        <li>Enterprise partnerships (Hospitals, Medicaid)</li>
+      </ul>
+    </section>
+
+    <!-- Slide 9: Fundraising -->
+    <section class="slide bg-blue">
+      <h2>We’re Raising $5M</h2>
+      <p>To scale AMI to **100K+ users & $20M ARR** within 18 months.</p>
+      <ul>
+        <li>FDA & NIH compliance</li>
+        <li>Product expansion & AI development</li>
+        <li>Scaling doctor & patient adoption</li>
+      </ul>
+    </section>
+
+    <!-- Slide 10: Thank You -->
+    <section class="slide">
+      <h1>Thank You!</h1>
+      <p>We appreciate your time and interest in AMI.</p>
+      <p>For questions, contact: <strong>fred@americanmedical.ai</strong></p>
+    </section>
+  </div>
+
+  <!-- Initialize Slide.js -->
+  <script>
+    const slideshow = new Slide({
+      container: '.slides',
+      loop: false,
+      controls: true,
+      pagination: true,
+      swipe: true,
+      keyboard: true
+    });
+  </script>
+</body>
+</html>

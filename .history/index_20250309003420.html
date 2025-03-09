@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AMI Pitch Deck</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Slide.js Core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slidejs/dist/slide.min.css" />
+
+  <!-- Satoshi Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ------------------------
+       GLOBAL STYLES
+    ------------------------ */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Satoshi', sans-serif;
+      scroll-behavior: smooth;
+      overflow: hidden;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    
+    /* Light Mode & Dark Mode */
+    body.light-mode {
+      background-color: #ffffff;
+      color: #0c2136;
+    }
+    body.dark-mode {
+      background-color: #0c2136;
+      color: #e6e6e6;
+    }
+    
+    /* Slides Container */
+    .slides {
+      width: 100%;
+      height: 100vh;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      position: relative;
+    }
+    
+    /* Full-viewport slide style with subtle animation */
+    .slide {
+      width: 100%;
+      height: 100vh;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 2rem;
+      text-align: center;
+      scroll-snap-align: start;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* COLORS */
+    .bg-darkblue { background-color: #163a5f; color: #ffffff; }
+    .bg-lightgray { background-color: #e6e6e6; color: #0c2136; }
+    .bg-blue { background-color: #2950b2; color: #ffffff; }
+    
+    /* Typography */
+    h1, h2, h3 {
+      margin: 0.5rem 0;
+    }
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2.2rem; }
+    h3 { font-size: 1.8rem; }
+    p, li {
+      font-size: 1.3rem;
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Image Placeholder */
+    .image-placeholder {
+      width: 250px;
+      height: 250px;
+      background-color: #e6e6e6;
+      margin: 1rem 0;
+      transition: transform 0.3s;
+    }
+    .image-placeholder:hover {
+      transform: scale(1.05);
+    }
+    
+    /* Custom Navigation UI */
+    .progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: #2950b2;
+      transition: width 0.3s;
+    }
+    .nav-buttons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .nav-button {
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: #fff;
+      padding: 0.7rem;
+      margin: 0 0.3rem;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+    .nav-button:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Dark Mode Toggle Button */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: background 0.3s;
+      z-index: 1000;
+    }
+    .theme-toggle:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Add these new styles for the enhanced slide 2 */
+    .two-column-layout {
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+      text-align: left;
+      gap: 2rem;
+      padding-top: 1rem;
+    }
+
+    .column {
+      flex: 1;
+    }
+
+    .text-column {
+      padding-right: 2rem;
+    }
+
+    .image-column {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .feature-list {
+      margin: 1.5rem 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .feature-item {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .feature-icon {
+      background-color: #2950b2;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+
+    .feature-text {
+      flex: 1;
+    }
+
+    .feature-text strong {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: #2950b2;
+    }
+
+    .tagline {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin: 0.5rem 0 1.5rem;
+      color: #2d3538;
+      line-height: 1.4;
+    }
+
+    .highlight-box {
+      background-color: rgba(41, 80, 178, 0.1);
+      border-left: 4px solid #2950b2;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .ami-image {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .ami-image:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .two-column-layout {
+        flex-direction: column;
+      }
+      
+      .text-column {
+        padding-right: 0;
+        order: 2;
+      }
+      
+      .image-column {
+        order: 1;
+        margin-bottom: 2rem;
+      }
+    }
+    
+    /* Hide default scrollbar */
+    ::-webkit-scrollbar {
+      width: 0;
+      background: transparent;
+    }
+
+    /* Add these new styles for the enhanced slide 3 */
+    .problem-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .problem-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .problem-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .problem-icon {
+      width: 40px;
+      height: 40px;
+      background-color: #163a5f;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .problem-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0;
+      color: #163a5f;
+    }
+
+    .problem-list {
+      margin: 0.5rem 0 0 0;
+      padding-left: 1rem;
+    }
+
+    .problem-list li {
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+
+    .problem-list li::before {
+      content: "•";
+      color: #2950b2;
+      font-weight: bold;
+      display: inline-block;
+      width: 1rem;
+      margin-left: -1rem;
+    }
+
+    .problem-stat {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #2950b2;
+      margin: 0.5rem 0;
+      display: block;
+    }
+
+    .section-intro {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      text-align: center;
+    }
+
+    .section-intro p {
+      font-size: 1.4rem;
+      line-height: 1.5;
+      color: #2d3538;
+    }
+
+    .cards-container {
+      display: flex;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .cards-container {
+        flex-direction: column;
+      }
+    }
+
+    /* Add these new styles for the enhanced slide 4 */
+    .solution-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .solution-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .solution-tagline {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin: 0.5rem 0 1rem;
+      color: #2d3538;
+      max-width: 800px;
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      width: 100%;
+    }
+
+    .solution-image-container {
+      grid-column: 1 / 3;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .solution-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .solution-feature {
+      background: rgba(41, 80, 178, 0.05);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .solution-feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .solution-feature::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background-color: #2950b2;
+    }
+
+    .solution-feature-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      color: #163a5f;
+      display: flex;
+      align-items: center;
+    }
+
+    .solution-feature-icon {
+      background-color: #2950b2;
+      color: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .solution-feature-description {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .solution-feature-list {
+      margin: 1rem 0 0 0;
+      padding-left: 1.5rem;
+    }
+
+    .solution-feature-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .accuracy-badge {
+      display: inline-block;
+      background-color: #2950b2;
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-weight: 700;
+      margin-left: 1rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .solution-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .solution-image-container {
+        grid-column: 1;
+      }
+    }
+
+    /* Add these new styles for the enhanced slide 5 */
+    .market-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      color: white;
+    }
+
+    .market-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .market-tagline {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin: 0.5rem 0 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .market-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .market-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .market-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .market-value {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+      color: white;
+    }
+
+    .market-label {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .market-description {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .market-note {
+      margin-top: 2rem;
+      font-style: italic;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .market-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="light-mode">
+  <!-- Dark Mode Toggle Button -->
+  <button class="theme-toggle" id="themeToggle">Dark Mode</button>
+  
+  <!-- Custom Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  
+  <!-- Navigation Buttons -->
+  <div class="nav-buttons">
+    <button class="nav-button" id="prevBtn">&#9664;</button>
+    <button class="nav-button" id="nextBtn">&#9654;</button>
+  </div>
+  
+  <!-- Slide.js Core Script -->
+  <script src="https://cdn.jsdelivr.net/npm/slidejs/dist/slide.min.js"></script>
+  
+  <div class="slides">
+    <!-- Slide 1: Cover / Title -->
+    <section class="slide bg-darkblue">
+      <h1>American Medical Intelligence (AMI)</h1>
+      <h3>Founder &amp; CEO: Fred Almeida</h3>
+      <p><strong>Contact:</strong> <a href="mailto:fred@americanmedical.ai" style="color:#fff;">fred@americanmedical.ai</a></p>
+      <blockquote>
+        "The greatest obstacle to discovery is not ignorance—it is the illusion of knowledge."<br>
+        — Daniel J. Boorstin
+      </blockquote>
+      <div class="image-placeholder"></div>
+    </section>
+    
+    <!-- Slide 2: Meet AMI -->
+    <section class="slide">
+      <div class="two-column-layout">
+        <div class="column text-column">
+          <h2>Meet American Medical Intelligence</h2>
+          <p class="tagline">Evidence-based AI revolutionizing healthcare with MedRank™ technology</p>
+          
+          <div class="highlight-box">
+            <p><strong>AMI</strong> is a first-principles approach to healthcare, delivering superhuman medical intelligence that restores trust between patients and doctors.</p>
+          </div>
+          
+          <ul class="feature-list">
+            <li class="feature-item">
+              <div class="feature-icon">✓</div>
+              <div class="feature-text">
+                <strong>Evidence-Based Intelligence</strong>
+                Our proprietary MedRank™ technology filters out unreliable research, ensuring near 100% accuracy in recommendations.
+              </div>
+            </li>
+            <li class="feature-item">
+              <div class="feature-icon">✓</div>
+              <div class="feature-text">
+                <strong>Comprehensive Health Integration</strong>
+                Connects to wearables, biomarkers, and medical records for truly personalized care.
+              </div>
+            </li>
+            <li class="feature-item">
+              <div class="feature-icon">✓</div>
+              <div class="feature-text">
+                <strong>Voice-First Experience</strong>
+                24/7 access to medical guidance through intuitive voice interface and avatar technology.
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="column image-column">
+          <img src="https://placehold.co/400x500/163a5f/ffffff?text=AMI+Platform" alt="AMI Platform Visualization" class="ami-image">
+        </div>
+      </div>
+    </section>
+    
+    <!-- Slide 3: Problem - Patient Side -->
+    <section class="slide bg-lightgray">
+      <div class="section-intro">
+        <h2>Healthcare is Broken</h2>
+        <p>The current healthcare system fails both patients and providers, creating gaps in care and eroding trust.</p>
+      </div>
+      
+      <div class="cards-container">
+        <div class="problem-card">
+          <div class="problem-header">
+            <div class="problem-icon">👤</div>
+            <h3 class="problem-title">Patient Challenges</h3>
+          </div>
+          <span class="problem-stat">62%</span>
+          <p>of Americans struggle to find reliable health information online</p>
+          <ul class="problem-list">
+            <li><strong>Information Overload</strong> — Patients are overwhelmed with contradictory health advice</li>
+            <li><strong>Missing Root Causes</strong> — Symptom-focused care ignores underlying health issues</li>
+            <li><strong>Limited Access</strong> — Millions remain "undoctored" or underinsured</li>
+          </ul>
+        </div>
+        
+        <div class="problem-card">
+          <div class="problem-header">
+            <div class="problem-icon">👨‍⚕️</div>
+            <h3 class="problem-title">Doctor Challenges</h3>
+          </div>
+          <span class="problem-stat">38%</span>
+          <p>of patients fully trust their doctors due to systemic constraints</p>
+          <ul class="problem-list">
+            <li><strong>Time Constraints</strong> — Administrative burdens limit patient interaction</li>
+            <li><strong>Knowledge Gaps</strong> — Impossible to stay current across all specialties</li>
+            <li><strong>Fragmented Care</strong> — Lack of cross-specialty collaboration</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Slide 4: Solution Overview -->
+    <section class="slide">
+      <div class="solution-container">
+        <div class="solution-header">
+          <h2>The AMI Solution</h2>
+          <p class="solution-tagline">Our AI-powered platform addresses healthcare's biggest challenges with evidence-based intelligence and personalized care.</p>
+        </div>
+        
+        <div class="solution-image-container">
+          <img src="https://placehold.co/800x300/163a5f/ffffff?text=AMI+Platform+Architecture" alt="AMI Platform Architecture" class="solution-image">
+        </div>
+        
+        <div class="solution-grid">
+          <div class="solution-feature">
+            <h3 class="solution-feature-title">
+              <div class="solution-feature-icon">🧠</div>
+              MedRank™ Technology
+              <span class="accuracy-badge">94% Accuracy</span>
+            </h3>
+            <p class="solution-feature-description">Our proprietary AI filters out unreliable or biased research, ensuring recommendations are based only on high-quality medical evidence.</p>
+            <ul class="solution-feature-list">
+              <li>Evaluates study methodology and reproducibility</li>
+              <li>Prioritizes peer-reviewed, unbiased research</li>
+              <li>Continuously updates with new medical findings</li>
+            </ul>
+          </div>
+          
+          <div class="solution-feature">
+            <h3 class="solution-feature-title">
+              <div class="solution-feature-icon">🔄</div>
+              Comprehensive Integration
+            </h3>
+            <p class="solution-feature-description">AMI connects to wearables, biomarkers, and medical records to create a complete picture of patient health.</p>
+            <ul class="solution-feature-list">
+              <li>Real-time data from wearable devices</li>
+              <li>Biomarker analysis for early detection</li>
+              <li>Unified health record across providers</li>
+            </ul>
+          </div>
+          
+          <div class="solution-feature">
+            <h3 class="solution-feature-title">
+              <div class="solution-feature-icon">🎯</div>
+              Root-Cause Approach
+            </h3>
+            <p class="solution-feature-description">Instead of treating symptoms, AMI identifies and addresses underlying health issues for lasting wellness.</p>
+            <ul class="solution-feature-list">
+              <li>Nutritional and lifestyle analysis</li>
+              <li>Cross-specialty diagnostic insights</li>
+              <li>Personalized intervention plans</li>
+            </ul>
+          </div>
+          
+          <div class="solution-feature">
+            <h3 class="solution-feature-title">
+              <div class="solution-feature-icon">🔊</div>
+              Voice-First Experience
+            </h3>
+            <p class="solution-feature-description">Natural, conversational interface makes complex health information accessible to everyone, anytime.</p>
+            <ul class="solution-feature-list">
+              <li>24/7 access to medical guidance</li>
+              <li>Avatar-powered visual interaction</li>
+              <li>Seamless doctor-patient communication</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Slide 5: Market Opportunity -->
+    <section class="slide bg-blue">
+      <div class="market-container">
+        <div class="market-header">
+          <h2>$72B Addressable Market</h2>
+          <p class="market-tagline">AMI is positioned to capture a significant share of the rapidly growing healthcare AI market.</p>
+        </div>
+        
+        <div class="market-grid">
+          <div class="market-card">
+            <div class="market-value">$4.9T</div>
+            <div class="market-label">U.S. Healthcare Market</div>
+            <p class="market-description">Projected to reach $6.8T by 2028, with increasing demand for AI-driven solutions.</p>
+          </div>
+          
+          <div class="market-card">
+            <div class="market-value">$37B</div>
+            <div class="market-label">Imaging & Biomarker Testing</div>
+            <p class="market-description">Rapidly growing sector with 12,000+ facilities seeking AI integration.</p>
+          </div>
+          
+          <div class="market-card">
+            <div class="market-value">$72B</div>
+            <div class="market-label">AI Health Subscriptions</div>
+            <p class="market-description">300M Americans × $240/year potential with our subscription model.</p>
+          </div>
+        </div>
+        
+        <p class="market-note">Additional revenue streams include Medicaid Advantage programs and global expansion opportunities.</p>
+      </div>
+    </section>
+    
+    <!-- Slide 6: Competitive Advantage -->
+    <section class="slide">
+      <h2>AMI's Competitive Edge</h2>
+      <ul>
+        <li><strong>MedRank™</strong> filters biased research for high-accuracy AI.</li>
+        <li>4D Patient Profiles: Wearables, biomarkers, history.</li>
+        <li>Voice-first UX with deep doctor integration.</li>
+      </ul>
+    </section>
+    
+    <!-- Slide 7: Traction & Validation -->
+    <section class="slide bg-lightgray">
+      <h2>Traction &amp; Validation</h2>
+      <ul>
+        <li>Beta-tested with 25+ physicians → 94% accuracy</li>
+        <li>Thousands of engaged users</li>
+        <li>Upcoming meetings with FDA, NIH, RFK Jr.</li>
+      </ul>
+    </section>
+    
+    <!-- Slide 8: Business Model -->
+    <section class="slide">
+      <h2>Monetization Strategy</h2>
+      <ul>
+        <li>Subscription plans ($240/year per user)</li>
+        <li>Biomarker diagnostics &amp; AI-powered testing</li>
+        <li>Enterprise partnerships (Hospitals, Medicaid)</li>
+      </ul>
+    </section>
+    
+    <!-- Slide 9: Fundraising -->
+    <section class="slide bg-blue">
+      <h2>We're Raising $5M</h2>
+      <p>To scale AMI to 100K+ users &amp; $20M ARR within 18 months.</p>
+      <ul>
+        <li>FDA &amp; NIH compliance</li>
+        <li>Product expansion &amp; AI development</li>
+        <li>Scaling doctor &amp; patient adoption</li>
+      </ul>
+    </section>
+    
+    <!-- Slide 10: Thank You -->
+    <section class="slide">
+      <h1>Thank You!</h1>
+      <p>We appreciate your time and interest in AMI.</p>
+      <p>For questions, contact: <strong>fred@americanmedical.ai</strong></p>
+    </section>
+  </div>
+  
+  <script>
+    // Initialize Slide.js with dual interaction modes.
+    const slideshow = new Slide({
+      container: '.slides',
+      loop: false,
+      controls: false,       // Custom controls used below.
+      pagination: false,     // Custom progress bar.
+      swipe: true,
+      keyboard: true
+    });
+    
+    // Custom Navigation Controls
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    nextBtn.addEventListener('click', () => slideshow.next());
+    prevBtn.addEventListener('click', () => slideshow.prev());
+    
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      document.body.classList.toggle('light-mode');
+      themeToggle.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+    });
+    
+    // Update Progress Bar on scroll
+    const progressBar = document.getElementById('progressBar');
+    const slidesContainer = document.querySelector('.slides');
+    slidesContainer.addEventListener('scroll', function() {
+      const scrollTop = this.scrollTop;
+      const totalHeight = this.scrollHeight - this.clientHeight;
+      const progressPercent = (scrollTop / totalHeight) * 100;
+      progressBar.style.width = progressPercent + '%';
+    });
+  </script>
+</body>
+</html>
